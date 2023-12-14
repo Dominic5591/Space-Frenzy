@@ -1,4 +1,4 @@
-# ClickFrenzy - JavaScript Project Proposal
+# ClickFrenzy - JavaScript Project
 
 [Visit my GitHub!](https://github.com/Dominic5591)
 
