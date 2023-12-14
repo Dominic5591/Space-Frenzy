@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":"AAEA,SACE,wBACA,a","sources":["webpack://project/./src/styles/example.scss"],"sourcesContent":["$color:purple;\r\n\r\n#main > h1{\r\n  border: 4px solid $color;\r\n  padding: 20px;\r\n}"],"names":[],"sourceRoot":""}
