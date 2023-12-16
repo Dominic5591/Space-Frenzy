@@ -1,7 +1,202 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
-#main > h1 {
-  border: 4px solid rgb(0, 13, 254);
-  padding: 20px;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1 {
+  margin: none;
+  color: blue;
+  text-align: center;
+  position: relative;
+  bottom: 20px;
+  font-weight: bold;
+  font-size: 44px;
+  text-shadow: 2px 2px 2px rgba(241, 0, 0, 0.5);
+  background: linear-gradient(45deg, #f6ff00 55%, #0026ff 70%);
+  background-clip: inherit;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+body {
+  background-image: url(https://64.media.tumblr.com/d6d0246ca0dffa230f03be2521b3210f/tumblr_obfjz6Bd9f1runoqyo2_r1_540.gifv);
+  background-size: cover;
+}
+
+#game-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 650px;
+  height: 500px;
+  margin: 0 auto;
+  padding-top: 70px;
+  padding-bottom: 100px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+#game-container {
+  border: 5px solid #ff0000;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0);
+}
+
+#timer-container,
+#score-container,
+#lives-container {
+  border: 3px solid #ff0000;
+  border-radius: 10px;
+  height: 45px;
+  width: 125px;
+  background-color: white;
+}
+
+#timer-container {
+  text-align: center;
+  align-items: center;
+  top: 20px;
+  color: red;
+  left: 50%;
 }

@@ -25,7 +25,7 @@ In addition, this project will include:
 ## Wireframes
 
 [Checkout my Wireframe!](https://wireframe.cc/pro/pp/5c6b09031708127)
-![Alt text](image-1.png)
+![Alt text](./wireframe/wireframe.png)
 
 ## Technologies, Libraries, APIs
 

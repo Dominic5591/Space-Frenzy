@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
-    <title>ClickFrenzy</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./dist/main.css" />
+  <script src="./dist/main.js"></script>
+  <title>ClickFrenzy</title>
+</head>
+<body>
+  <div id="game-wrapper">
+    <h1>ClickFrenzy</h1>
 
-  <body>
-    <div id="main"></div>
-  </body>
-
+    <div id="info-wrapper">
+      <div id="timer-container"></div>
+      <div id="score-container"></div>
+      <div id="lives-container"></div>
+    </div>
+    <canvas id="game-container" width="650" height="500" tabindex="0"></canvas>
+  </div>
+</body>
 </html>
