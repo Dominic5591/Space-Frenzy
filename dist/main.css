@@ -180,7 +180,8 @@ h1 {
 #game-container {
   border: 5px solid #ff0000;
   border-radius: 10px;
-  background-color: rgb(0, 0, 0);
+  background-size: cover;
+  background-color: rgb(255, 255, 255);
 }
 
 #timer-container,
@@ -199,4 +200,16 @@ h1 {
   top: 20px;
   color: red;
   left: 50%;
+}
+
+#score-container,
+#lives-container {
+  align-items: center;
+  text-align: center;
+  line-height: 42px;
+  bottom: 20px;
+}
+
+#lives {
+  color: #ff0000;
 }
