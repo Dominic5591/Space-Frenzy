@@ -1,16 +1,17 @@
-class SquareEnemy {
+class YellowEnemy {
   constructor(canvas, ctx) {
     this.canvas = canvas;
     this.ctx = ctx;
     this.width = 40;
     this.height = 40;
+    this.health = 3;
     this.speed = 3;
     this.x = this.canvas.width;
     this.y =
       Math.random() * (this.canvas.height - 2 * this.height) + this.height;
     this.color = "yellow";
-    this.health = 3;
-    this.markedForRemoval = false;
+    
+    this.marked = false;
   }
 
   move() {
@@ -33,21 +34,9 @@ class SquareEnemy {
     this.health--;
 
     if (this.health <= 0) {
-      this.markedForRemoval = true;
+      this.marked = true;
     }
-  }
-
-  create() {
-    this.x = this.canvas.width;
-    this.y =
-      Math.random() * (this.canvas.height - 2 * this.height) + this.height;
-    this.width = 40;
-    this.height = 40;
-    this.speed = 3;
-    this.color = "yellow";
-    this.health = 3;
-    this.markedForRemoval = false;
   }
 }
 
-export default SquareEnemy;
+export default YellowEnemy;
