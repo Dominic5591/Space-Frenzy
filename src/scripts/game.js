@@ -15,11 +15,10 @@ class Game {
     this.bullets = []
     this.player = new Player(this.canvas, this.ctx)
 
-
     //sounds
     this.bulletSound = new Audio('./assets/sounds/shoot.wav')
     this.bulletSound.volume = 0.2;
-    this.bulletSound.loop = false; 
+    this.bulletSound.loop = false;
 
     this.enemySound = new Audio('./assets/sounds/hurt.mp3')
     this.enemySound.volume = 0.3;
@@ -33,18 +32,25 @@ class Game {
     this.playSound.volume = 1
     this.playSound.loop = false
 
+    this.respawnSound = new Audio('./assets/sounds/respawn.mp3')
+    this.respawnSound.volume = 0.3;
+    this.respawnSound.loop = false;
+
+    this.isMuted = false;
 
     document.addEventListener("keydown", this.handleKeyDown.bind(this))
     document.addEventListener("keyup", this.handleKeyUp.bind(this))
+
     this.redEnemyDelay = 500;
     this.yellowEnemyDelay = 1000; 
     this.createRedEnemy(5)
     this.createYellowEnemy(3)
     this.gamePaused = true;
     this.gameLoop();
+
     const muteBtn = document.getElementById("mute")
     muteBtn.addEventListener("click", () => {
-      this.mainMusic.pause()
+      this.muteToggle()
     })
 
     const startGameBtn = document.getElementById("start-game-btn");
@@ -53,7 +59,6 @@ class Game {
       this.hideMenu()
     });
   }
-
 
   showMenu() {
     const mainMenu = document.getElementById("main-menu");
@@ -76,6 +81,15 @@ class Game {
     this.gameLoop(); 
   }
 
+  muteToggle() {
+    this.isMuted = !this.isMuted
+
+    this.bulletSound.muted = this.isMuted
+    this.enemySound.muted = this.isMuted
+    this.mainMusic.muted = this.isMuted
+    this.playSound.muted = this.isMuted
+    this.respawnSound.muted = this.isMuted
+  }
 
   createRedEnemy(num) {
     for (let i = 0; i < num; i++) {
@@ -180,6 +194,7 @@ class Game {
     if (!this.player.shield && distance < red.radius + this.player.radius) {
       this.lives--;
       if (this.lives > 0) {
+        this.respawnSound.play()
         this.player.respawn()
         this.player.y = this.canvas.height / 2
       } else {
@@ -197,6 +212,7 @@ class Game {
     if (!this.player.shield && distance < yellow.width && !yellow.marked) {
       this.lives--;
       if (this.lives > 0) {
+        this.respawnSound.play()
         this.player.respawn()
         this.player.y = this.canvas.height / 2;
       } else {

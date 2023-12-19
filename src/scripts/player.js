@@ -9,9 +9,6 @@ class Player {
     this.ctx = ctx
     this.shield = false // player shield on respawn
     this.shieldTime = 3000
-    this.respawnSound = new Audio('./assets/sounds/respawn.mp3')
-    this.respawnSound.volume = 0.3;
-    this.respawnSound.loop = false;
   }
 
   draw() {
@@ -22,7 +19,6 @@ class Player {
     this.ctx.fillStyle = "rgba(0, 0, 255, 1)"
     this.ctx.fill()
     this.ctx.closePath()
-
 
     if (this.shield) {
       const shieldRadius = this.radius + 10; //  size of shield
@@ -43,9 +39,8 @@ class Player {
     if (this.y + this.radius < 0) this.y = canvas.height + this.radius 
   }
 
-  //method for adding shield when you lose a life, 3 second invincibility 
+  // method for adding shield when you lose a life, 3 second invincibility 
   respawn() { 
-    this.respawnSound.play();
     this.shield = true
     setTimeout(() => {
       this.shield = false
