@@ -1,29 +1,101 @@
 @import "./styles/reset.scss";
 
-// $canvasWidth: 600px;
-// $canvasHeight: 300px;
-
 h1 {
   margin: none;
   color: blue;
   text-align: center;
   position: relative;
-  // top: 40px;
   bottom: 20px;
   font-weight: bold;
   font-size: 44px;
-  text-shadow:
-    2px 2px 2px rgba(241, 0, 0, 0.5);
-  background: linear-gradient(45deg, #f6ff00 55%, #0026ff 70%);
+  text-shadow: 2px 2px 2px rgba(92, 0, 241, 0.5);
+  background: linear-gradient(70deg, blue 55%, #ff006a 70%);
   background-clip: inherit;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 body {
-  // background-color: rgb(39, 74, 0);
-  background-image: url(https://64.media.tumblr.com/d6d0246ca0dffa230f03be2521b3210f/tumblr_obfjz6Bd9f1runoqyo2_r1_540.gifv);
-  background-size: cover;
+  background-color: rgb(0, 0, 0);
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  border-left: 5px solid #ff00ff;
+  border-right: 5px solid #ff00ff;
+  border-top: 5px solid blue;
+  border-bottom: 5px solid blue;
+  border-radius: 10px;
+  width: 600px;
+  height: 300px;
+  background-color: rgb(0, 0, 0);
+  padding: 60px;
+  text-align: center;
+}
+
+#start-game-btn {
+  background-color: #ff00ff;
+  color: rgb(47, 1, 214);
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+#start-game-btn:hover {
+  background-color: blue;
+  color: #ff00ff;
+}
+
+
+h2 {
+  margin: none;
+  color: rgb(119, 0, 255);
+  text-align: center;
+  position: relative;
+  bottom: 30px;
+  font-weight: bold;
+  font-size: 44px;
+  // text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(10deg, #0044ff 55%, #ff006a 70%);
+  background-clip: inherit;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+#instructions {
+  text-wrap: wrap;
+  margin-top: 50px;
+  font-size: smaller;
+  color: rgb(0, 60, 255);
+}
+
+#git {
+  margin-top: 40px;
+}
+
+#mute {
+  border: none;
+  background-color: transparent;
+  position: relative;
+
 }
 
 #game-wrapper {
@@ -34,12 +106,6 @@ body {
   margin: 0 auto;
   padding-top: 70px;
   padding-bottom: 100px;
-
-}
-
-
-h1 {
-  text-align: center;
 }
 
 #info-wrapper {
@@ -49,29 +115,33 @@ h1 {
   margin-bottom: 16px;
 }
 
+
+
 #game-container {
-  border: 5px solid #ff0000;
+  border-left: 5px solid #ff00ff;
+  border-right: 5px solid #ff00ff;
+  border-top: 5px solid blue;
+  border-bottom: 5px solid blue;
   border-radius: 10px;
-  background-image: url(https://64.media.tumblr.com/d6d0246ca0dffa230f03be2521b3210f/tumblr_obfjz6Bd9f1runoqyo2_r1_540.gifv);
+  background-image: url(https://img.goodfon.com/wallpaper/nbig/c/82/kosmos-art-pikseli-8bit-planeta-zvezdy-retro-grafika.jpg);
   background-size: cover;
-  // background-color: rgb(255, 255, 255);
 }
 
 #timer-container,
 #score-container,
 #lives-container {
-  border: 3px solid #ff0000;
+  border: 3px solid #0044ff;
   border-radius: 10px;
   height: 45px;
   width: 125px;
-  background-color: white;
+  background-color: rgb(0, 0, 0);
 }
 
 #timer-container {
   text-align: center;
   align-items: center;
   top: 20px;
-  color: red;
+  color: #0044ff;
   left: 50%;
 }
 
@@ -80,17 +150,15 @@ h1 {
 #lives-container {
   align-items: center;
   text-align: center;
+  font-size: 10px;
   line-height: 42px;
   bottom: 20px;
 }
 
-
-// span {
-//   align-items: center;
-//   text-align: center;
-//   top: 50
-//   ;
-// }
 #lives {
-  color: #ff0000;
+  color: #0044ff;
+}
+
+#score {
+  color: #0044ff;
 }

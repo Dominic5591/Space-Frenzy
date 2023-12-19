@@ -33,6 +33,15 @@ In addition, this project will include:
 - Vanilla JavaScript for game logic.
 - Local storage for high scores and game progress.
 
+- <a target="_blank" href="https://icons8.com/icon/OEy009vn4nTb/galaxy">Space</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+- <a target="_blank" href="https://icons8.com/icon/oaQdQ0hfJiHw/galaxy">Space</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+- Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=124476">Creating Background Music and Effects</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=124476">Pixabay</a>
+
+- Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=68698">Pixabay</a>
+
+- Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=102842">Pixabay</a>
+
 ## Implementation Timeline
 
 - **Friday Afternoon & Weekend:**

@@ -2,16 +2,14 @@ class YellowEnemy {
   constructor(canvas, ctx) {
     this.canvas = canvas;
     this.ctx = ctx;
-    this.width = 40;
-    this.height = 40;
     this.health = 3;
     this.speed = 3;
     this.x = this.canvas.width;
-    this.y =
-      Math.random() * (this.canvas.height - 2 * this.height) + this.height;
+    this.y = Math.random() * (this.canvas.height - 2 * this.height) + this.height;
     this.color = "yellow";
-    
     this.marked = false;
+    this.width = 40;
+    this.height = 40;
   }
 
   move() {
