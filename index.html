@@ -5,20 +5,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" type="image/x-icon" href="assets/icons8-space-16.png">
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="./dist/main.js"></script>
-  <title>ClickFrenzy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"/>
+  <title>SpaceFrenzy</title>
 </head>
 <body>
   <div id="game-wrapper">
-    <h1>ClickFrenzy</h1>
+    <h1>SpaceFrenzy</h1>
+
+    <div id="main-menu" class="modal">
+      <div class="modal-content">
+        <h2>SpaceFrenzy</h2>
+        <button id="start-game-btn">Start Game</button>
+        <p id="instructions">Instructions:</p>
+        <p id="instructions">press space bar to shoot, press up and down arrows to move, try not to get hit and survive as long as you can</p>
+        <a href="https://github.com/Dominic5591/Vanilla-JS-Project"><img id="git" src="assets/icons8-github-64.png"></a>
+      </div>
+    </div>
 
     <div id="info-wrapper">
-      <div id="timer-container"></div>
-      <div id="score-container"></div>
-      <div id="lives-container"></div>
+      <div id="timer-container"><button id="mute"><img id="mute-pic" src="assets/icons8-mute-40.png"></button></div>
+      <div id="score-container"><span id="score">0</span></div>
+      <div id="lives-container"><span id="lives">3</span></div>
     </div>
-    <canvas id="game-container" width="650" height="500" tabindex="0"></canvas>
+
+    <canvas id="game-container" width="800" height="600"</canvas>
   </div>
 </body>
 </html>
