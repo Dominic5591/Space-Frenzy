@@ -44,7 +44,7 @@ class Game {
     document.addEventListener("keyup", this.handleKeyUp.bind(this))
 
     this.redEnemyDelay = 500;
-    this.yellowEnemyDelay = 1000; 
+    this.yellowEnemyDelay = 1000;
     this.createRedEnemy(5)
     this.createYellowEnemy(3)
     this.gamePaused = true;
@@ -91,19 +91,80 @@ class Game {
 
   gameOver() {
     this.paused = true;
+    this.displayHighScores(); 
 
     const modal = document.getElementById("game-over-modal");
     const finalScore = document.getElementById("final-score");
     finalScore.textContent = `Final Score: ${this.score}`; 
+
     modal.style.display = "flex";
 
     const restartBtn = document.getElementById("restart-btn");
+    let restartHandled = false;
+
     restartBtn.addEventListener("click", () => {
+      if (restartHandled) {
+        return; // if this is true do nothing
+      }
+  
+      const initialsInput = document.getElementById("initials-input");
+      const initials = initialsInput.value.trim();
+    
+      if (initials !== "" && this.score !== 0) {
+        const user = {
+          initials: initials,
+          score: this.score
+        };
+    
+        const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    
+        highScores.push(user);
+        highScores.sort((a, b) => b.score - a.score);
+    
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+      }
+      
+      initialsInput.value = "";
       this.playSound.currentTime = 0;
-      this.playSound.play()
-      this.showMenu(); 
+      this.playSound.play();
+      this.showMenu();
       modal.style.display = "none";
+      restartHandled = true;
     });
+  }
+
+
+  displayHighScores() {
+    const highScoresContainer = document.getElementById("high-scores");
+    highScoresContainer.innerHTML = "abc";
+
+    // get data from local storage
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  
+    if (highScores.length > 0) {
+      const highScoresTitle = document.createElement("h3");
+      highScoresTitle.classList.add("score-title")
+      highScoresTitle.textContent = "High Scores";
+      highScoresTitle.classList.add("score-title")
+      highScoresContainer.appendChild(highScoresTitle);
+  
+      const list = document.createElement("ul");
+  
+      //  each high score
+      highScores.forEach((user, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${user.initials}: ${user.score}`;
+        listItem.classList.add("high-score-entry"); 
+        list.appendChild(listItem);
+      });
+  
+      highScoresContainer.appendChild(list);
+    } else {
+      const noScoresMessage = document.createElement("p");
+      noScoresMessage.textContent = "No high scores yet!";
+      noScoresMessage.classList.add("no-score")
+      highScoresContainer.appendChild(noScoresMessage);
+    }
   }
 
   muteToggle() {

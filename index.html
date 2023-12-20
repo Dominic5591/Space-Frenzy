@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,13 +12,11 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
     rel="stylesheet"/>
-
   <title>SpaceFrenzy</title>
 </head>
 <body>
   <div id="game-wrapper">
     <h1>SpaceFrenzy</h1>
-
     <div id="main-menu" class="modal">
       <div class="modal-content">
         <h2>SpaceFrenzy</h2>
@@ -31,18 +28,19 @@
       </div>
     </div>
 
-
     <div id="game-over-modal" class="modal">
       <div class="modal-content">
-        <span class="close" id="close-modal">&times;</span>
-        <h2>Game Over</h2>
-        <p id="final-score"><span id="final-score"></span></p>
+        <h2>Game Over!</h2>
+        <p><span id="final-score"></span></p>
         <button id="restart-btn">Main Menu</button>
+        <label id="label" for="initials-input">Enter Initials:</label>
+        <input type="text" id="initials-input" maxlength="3">
+        <div id="high-scores"></div>
       </div>
     </div>
 
     <div id="info-wrapper">
-      <div id="timer-container"><img id="mute" src="assets/icons8-mute-40.png"></div>
+      <div id="mute-container"><img id="mute" src="assets/icons8-mute-40.png"></div>
       <div id="score-container"><span id="score">0</span></div>
       <div id="lives-container"><span id="lives">3</span></div>
     </div>

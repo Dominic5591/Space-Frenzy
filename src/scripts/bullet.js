@@ -12,6 +12,4 @@ class Bullet {
     ctx.fillRect(this.x, this.y, this.width, this.height)
   }
 }
-
-
 export default Bullet
