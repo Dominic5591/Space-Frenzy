@@ -1,7 +1,7 @@
 import Player from "./player"
 import Bullet from "./bullet"
 import RedEnemy from "./redEnemy"
-import YellowEnemy from "./yellowEnemy"
+import Meteor from "./meteor"
 class Game {
   constructor() {
     this.canvas = document.getElementById("game-container")
@@ -10,11 +10,9 @@ class Game {
     this.score = 0
     this.moveUp = false
     this.moveDown = false
-    this.yellowEnemies = []
+    this.meteors = []
     this.redEnemies = []
     this.bullets = []
-    this.redEnemyTimeouts = [];
-    this.yellowEnemyTimeouts = [];
     this.player = new Player(this.canvas, this.ctx)
 
     this.bulletSound = new Audio('./assets/sounds/shoot.wav')
@@ -42,9 +40,9 @@ class Game {
     document.addEventListener("keyup", this.handleKeyUp.bind(this))
 
     this.redEnemyDelay = 500;
-    this.yellowEnemyDelay = 1000;
+    this.meteorDelay = 1000;
     this.createRedEnemy(5)
-    this.createYellowEnemy(3)
+    this.createMeteor(3)
     this.gamePaused = true;
     this.gameLoop();
 
@@ -183,11 +181,11 @@ class Game {
     }
   }
 
-  createYellowEnemy(num) {
+  createMeteor(num) {
     for (let i = 0; i < num; i++) {
       setTimeout(() => {
-        this.yellowEnemies.push(new YellowEnemy(this.canvas, this.ctx))
-      }, i * this.yellowEnemyDelay)
+        this.meteors.push(new Meteor(this.canvas, this.ctx))
+      }, i * this.meteorDelay)
     }
   }
 
@@ -195,11 +193,11 @@ class Game {
     this.paused = false;
     this.gamePaused = false
     this.redEnemies.length = 0
-    this.yellowEnemies.length = 0
+    this.meteors.length = 0
     this.score = 0
     this.lives = 3
     this.createRedEnemy(6)
-    this.createYellowEnemy(4)
+    this.createMeteor(4)
   }
 
   shoot() {
@@ -237,7 +235,7 @@ class Game {
       this.mainMusic.play()
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.updateRed();
-      this.updateYellow();
+      this.updateMeteor();
       this.updateBullets();
       this.updatePlayer();
       this.updateScore();
@@ -259,13 +257,13 @@ class Game {
     });
   }
 
-  updateYellow() { 
-    this.yellowEnemies.forEach((yellow) => {
-      yellow.move()
-      yellow.draw()
-      this.yellowCollision(yellow)
-      this.bulletYellowCollisions(yellow)
-      this.yellowWrap(yellow)
+  updateMeteor() { 
+    this.meteors.forEach((meteor) => {
+      meteor.move()
+      meteor.draw()
+      this.meteorCollision(meteor)
+      this.bulletMeteorCollisions(meteor)
+      this.meteorWrap(meteor)
     });
   }
 
@@ -294,9 +292,9 @@ class Game {
     }
   }
 
-  yellowCollision(yellow) {
-    const distance = Math.hypot(yellow.x - this.player.x, yellow.y - this.player.y)
-    if (!this.player.shield && distance < yellow.width && !yellow.marked) {
+  meteorCollision(meteor) {
+    const distance = Math.hypot(meteor.x - this.player.x, meteor.y - this.player.y)
+    if (!this.player.shield && distance < meteor.width && !meteor.marked) {
       this.lives--;
       if (this.lives > 0) {
         this.respawnSound.play()
@@ -311,26 +309,26 @@ class Game {
     }
   }
 
-  bulletYellowCollisions(yellow) {
+  bulletMeteorCollisions(meteor) {
     this.bullets.forEach((bullet, bulletIdx) => {
       if (
-        bullet.x < yellow.x + yellow.width &&
-        bullet.x + bullet.width > yellow.x &&
-        bullet.y < yellow.y + yellow.height &&
-        bullet.y + bullet.height > yellow.y
+        bullet.x < meteor.x + meteor.width &&
+        bullet.x + bullet.width > meteor.x &&
+        bullet.y < meteor.y + meteor.height &&
+        bullet.y + bullet.height > meteor.y
       ) {
         this.bullets.splice(bulletIdx, 1)
-        yellow.takeDamage()
+        meteor.takeDamage()
 
-        if (yellow.marked) {
-          this.yellowEnemies.splice(this.yellowEnemies.indexOf(yellow), 1)
+        if (meteor.marked) {
+          this.meteors.splice(this.meteors.indexOf(meteor), 1)
           if (!this.enemySound.paused) {
             this.enemySound.pause();
             this.enemySound.currentTime = 0;
           }
           this.enemySound.play()
           this.score += 300
-          this.createYellowEnemy(1)
+          this.createMeteor(1)
           this.updateScore()
         }
       }
@@ -362,11 +360,11 @@ class Game {
       red.y = Math.random() * (this.canvas.height - 2 * red.radius) + red.radius
     }
   }
-  yellowWrap(yellow) {
-    if (yellow.x - yellow.radius < 0) yellow.x = this.canvas.width + yellow.radius
+  meteorWrap(meteor) {
+    if (meteor.x - meteor.radius < 0) meteor.x = this.canvas.width + meteor.radius
     
-    if (yellow.y - yellow.radius < 0 || yellow.y + yellow.radius > this.canvas.height) {
-      yellow.y = Math.random() * (this.canvas.height - 2 * yellow.radius) + yellow.radius
+    if (meteor.y - meteor.radius < 0 || meteor.y + meteor.radius > this.canvas.height) {
+      meteor.y = Math.random() * (this.canvas.height - 2 * meteor.radius) + meteor.radius
     }
   }
 

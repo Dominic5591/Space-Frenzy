@@ -34,8 +34,8 @@ SpaceFrenzy is coded completely in vanilla Javascript. The game is drawn onto a 
 
 - HTML, CSS for structure and styling.
 - Vanilla JavaScript for game logic.
-- Local storage for high scores and game progress.
-- Webpack to bundle JS files
+- Local storage for high scores.
+- Webpack to bundle JS files.
 
 
 ## The high score system is stored using localStorage
