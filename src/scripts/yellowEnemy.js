@@ -3,11 +3,15 @@ class YellowEnemy {
     this.canvas = canvas;
     this.ctx = ctx;
     this.health = 3;
-    this.speed = 3;
+    this.speed = 3.5;
     this.x = this.canvas.width;
     this.y = Math.random() * (this.canvas.height - 2 * this.height) + this.height;
     this.color = "yellow";
     this.marked = false;
+
+    this.sprite = new Image()
+    this.sprite.src = './assets/icons8-stone-100.png'
+
     this.width = 40;
     this.height = 40;
   }
@@ -24,8 +28,7 @@ class YellowEnemy {
   }
 
   draw() {
-    this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.sprite, this.x, this.y, this.width, this.height);
   }
 
   takeDamage() {

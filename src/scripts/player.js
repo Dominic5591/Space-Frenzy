@@ -6,19 +6,30 @@ class Player {
     this.speed = 3.5
     this.bulletWidth = 20
     this.bulletHeight = 10 
+
+
+    this.sprite = new Image();
+    this.sprite.src = './assets/player.png'
+    this.width = 50; // Adjust based on the actual sprite dimensions
+    this.height = 50; 
     this.ctx = ctx
     this.shield = false // player shield on respawn
     this.shieldTime = 3000
+
   }
 
   draw() {
-    this.ctx.beginPath()
-    this.ctx.moveTo(this.x + this.radius, this.y)
-    this.ctx.lineTo(this.x - this.radius, this.y + this.radius)
-    this.ctx.lineTo(this.x - this.radius, this.y - this.radius)
-    this.ctx.fillStyle = "rgba(0, 0, 255, 1)"
-    this.ctx.fill()
-    this.ctx.closePath()
+
+    this.ctx.drawImage(this.sprite, this.x - this.width / 2, this.y - this.height / 2, this.width, this.height);
+
+
+    // this.ctx.beginPath()
+    // this.ctx.moveTo(this.x + this.radius, this.y)
+    // this.ctx.lineTo(this.x - this.radius, this.y + this.radius)
+    // this.ctx.lineTo(this.x - this.radius, this.y - this.radius)
+    // this.ctx.fillStyle = "rgba(0, 0, 255, 1)"
+    // this.ctx.fill()
+    // this.ctx.closePath()
 
     if (this.shield) {
       const shieldRadius = this.radius + 10; //  size of shield

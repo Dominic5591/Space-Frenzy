@@ -6,13 +6,15 @@ class Game {
   constructor() {
     this.canvas = document.getElementById("game-container")
     this.ctx = this.canvas.getContext("2d")
-    this.lives = 3
+    this.lives = 1
     this.score = 0
     this.moveUp = false
     this.moveDown = false
     this.yellowEnemies = []
     this.redEnemies = []
     this.bullets = []
+    this.redEnemyTimeouts = [];
+    this.yellowEnemyTimeouts = [];
     this.player = new Player(this.canvas, this.ctx)
 
     //sounds
@@ -48,6 +50,9 @@ class Game {
     this.gamePaused = true;
     this.gameLoop();
 
+    this.paused = false;
+    this.gameOverModal = document.getElementById("game-over-modal");
+
     const muteBtn = document.getElementById("mute")
     muteBtn.addEventListener("click", () => {
       this.muteToggle()
@@ -55,6 +60,7 @@ class Game {
 
     const startGameBtn = document.getElementById("start-game-btn");
     startGameBtn.addEventListener("click", () => {
+      this.playSound.currentTime = 0;
       this.playSound.play()
       this.hideMenu()
     });
@@ -78,7 +84,26 @@ class Game {
   
   resumeGame() {
     this.gamePaused = false;
+    this.reset()
     this.gameLoop(); 
+  }
+
+
+  gameOver() {
+    this.paused = true;
+
+    const modal = document.getElementById("game-over-modal");
+    const finalScore = document.getElementById("final-score");
+    finalScore.textContent = `Final Score: ${this.score}`; 
+    modal.style.display = "flex";
+
+    const restartBtn = document.getElementById("restart-btn");
+    restartBtn.addEventListener("click", () => {
+      this.playSound.currentTime = 0;
+      this.playSound.play()
+      this.showMenu(); 
+      modal.style.display = "none";
+    });
   }
 
   muteToggle() {
@@ -108,12 +133,14 @@ class Game {
   }
 
   reset() {
+    this.paused = false;
+    this.gamePaused = false
     this.redEnemies.length = 0
     this.yellowEnemies.length = 0
     this.score = 0
     this.lives = 3
-    this.createRedEnemy(5)
-    this.createYellowEnemy(3)
+    this.createRedEnemy(6)
+    this.createYellowEnemy(4)
   }
 
   shoot() {
@@ -147,7 +174,7 @@ class Game {
   }
 
   gameLoop() {
-    if (!this.gamePaused) {
+    if (!this.gamePaused && !this.paused) {
       this.mainMusic.play()
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.updateRed();
@@ -157,8 +184,10 @@ class Game {
       this.updateScore();
       this.updateLives();
     }
-  
-    requestAnimationFrame(this.gameLoop.bind(this));
+    
+    if (!this.gamePaused && !this.paused) {
+      requestAnimationFrame(this.gameLoop.bind(this));
+    }
   }
 
 
@@ -201,8 +230,7 @@ class Game {
         this.mainMusic.pause()
         this.mainMusic.currentTime = 0;
         this.enemySound.play()
-        alert("game over")
-        this.reset()
+        this.gameOver()
       }
     }
   }
@@ -219,8 +247,7 @@ class Game {
         this.mainMusic.pause()
         this.mainMusic.currentTime = 0;
         this.enemySound.play()
-        alert("game over")
-        this.reset();
+        this.gameOver()
       }
     }
   }

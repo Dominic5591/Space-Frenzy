@@ -7,9 +7,6 @@ class Bullet {
     this.speed = 9
   }
 
-
-
-
   draw(ctx) {
     ctx.fillStyle = "green"
     ctx.fillRect(this.x, this.y, this.width, this.height)

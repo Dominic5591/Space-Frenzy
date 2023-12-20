@@ -4,13 +4,13 @@ class RedEnemy {
     this.canvas = canvas
     this.ctx = ctx
     this.health = 1
-    this.speed = 3
+    this.speed = 4.5
     this.radius = 20
     this.x = this.canvas.width
     this.y = Math.random() * (this.canvas.height - 2 * this.radius) + this.radius //random y axis spawn location, spawns on from the right side but this randomomizes the location of up and down
     this.marked = false //check if enemy should be removed
     this.image = new Image()
-    this.image.src = 'https://art.pixilart.com/sr27dba301e83aws3.png'
+    this.image.src = './assets/enemy1.png'
     this.width = 40;
     this.height = 40;
   }
