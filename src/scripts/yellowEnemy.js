@@ -8,17 +8,14 @@ class YellowEnemy {
     this.y = Math.random() * (this.canvas.height - 2 * this.height) + this.height;
     this.color = "yellow";
     this.marked = false;
-
     this.sprite = new Image()
     this.sprite.src = './assets/icons8-stone-100.png'
-
     this.width = 40;
     this.height = 40;
   }
 
   move() {
     this.x -= this.speed;
-
     if (this.x < 0 || this.health <= 0) {
       this.x = this.canvas.width;
       this.y =

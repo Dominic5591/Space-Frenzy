@@ -17,29 +17,27 @@ class Game {
     this.yellowEnemyTimeouts = [];
     this.player = new Player(this.canvas, this.ctx)
 
-    //sounds
     this.bulletSound = new Audio('./assets/sounds/shoot.wav')
-    this.bulletSound.volume = 0.2;
+    this.bulletSound.volume = 0.1;
     this.bulletSound.loop = false;
 
     this.enemySound = new Audio('./assets/sounds/hurt.mp3')
-    this.enemySound.volume = 0.3;
+    this.enemySound.volume = 0.1;
     this.enemySound.loop = false;
 
     this.mainMusic = new Audio('./assets/sounds/music.mp3')
-    this.mainMusic.volume = 0.2;
+    this.mainMusic.volume = 0.1;
     this.mainMusic.loop = true;
 
     this.playSound = new Audio('./assets/sounds/button.mp3')
-    this.playSound.volume = 1
+    this.playSound.volume = 0.3
     this.playSound.loop = false
 
     this.respawnSound = new Audio('./assets/sounds/respawn.mp3')
-    this.respawnSound.volume = 0.3;
+    this.respawnSound.volume = 0.1;
     this.respawnSound.loop = false;
 
     this.isMuted = false;
-
     document.addEventListener("keydown", this.handleKeyDown.bind(this))
     document.addEventListener("keyup", this.handleKeyUp.bind(this))
 
@@ -104,7 +102,7 @@ class Game {
 
     restartBtn.addEventListener("click", () => {
       if (restartHandled) {
-        return; // if this is true do nothing
+        return;
       }
   
       const initialsInput = document.getElementById("initials-input");
@@ -161,7 +159,7 @@ class Game {
       highScoresContainer.appendChild(list);
     } else {
       const noScoresMessage = document.createElement("p");
-      noScoresMessage.textContent = "No high scores yet!";
+      noScoresMessage.textContent = "No high scores!";
       noScoresMessage.classList.add("no-score")
       highScoresContainer.appendChild(noScoresMessage);
     }
@@ -358,13 +356,13 @@ class Game {
     });
   }
 
-  redWrap(red) {  // Wrapping RedEnemy around the canvas and randomizing y position if out of bounds
+  redWrap(red) {  
     if (red.x - red.radius < 0) red.x = this.canvas.width + red.radius
     if (red.y - red.radius < 0 || red.y + red.radius > this.canvas.height) {
       red.y = Math.random() * (this.canvas.height - 2 * red.radius) + red.radius
     }
   }
-  yellowWrap(yellow) { // Wrapping YellowEnemy around the canvas and randomizing y position if out of bounds
+  yellowWrap(yellow) {
     if (yellow.x - yellow.radius < 0) yellow.x = this.canvas.width + yellow.radius
     
     if (yellow.y - yellow.radius < 0 || yellow.y + yellow.radius > this.canvas.height) {

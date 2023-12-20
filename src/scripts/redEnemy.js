@@ -26,10 +26,7 @@ class RedEnemy {
 
   draw() {
     this.ctx.beginPath();
-  
-    // Draw the red circle
     this.ctx.drawImage(this.image, this.x - this.width / 2, this.y - this.height / 2, this.width, this.height);
-    // this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     this.ctx.fillStyle = "red";
     this.ctx.fill();
   
