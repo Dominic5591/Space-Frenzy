@@ -53,7 +53,7 @@ SpaceFrenzy is coded completely in vanilla Javascript. The game is drawn onto a 
 
 ## Future Implementation
 
-- Want to add boss enemys and items
+- Want to add boss enemies and items
 - Would like to add global storage
 
 
